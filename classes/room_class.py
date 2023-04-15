@@ -33,3 +33,13 @@ class Room:
 #Removes a song to the song list in room instance
     def remove_song_from_song_list(self, song):
         self.song_list.remove(song)
+
+#Checks if guest's fav song is in the song list.
+    def is_fav_song_in_list(self, guest):
+        for i in range(len(self.song_list)):
+            if self.song_list[i].name == guest.fav_song:
+                print("Woohoo!")
+                return True
+            else:
+                print("Boo!")
+                return False

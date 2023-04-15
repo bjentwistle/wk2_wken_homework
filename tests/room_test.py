@@ -14,7 +14,7 @@ class TestRoom(unittest.TestCase):
         self.song2 = Song("Paranoid", "Black Sabbath", "Heavy Metal", 7)
         self.song3 = Song("Flowers", "Miley Cyrus", "Pop", 3)
 
-# 7 Tests here
+# 9 Tests here
 
     def test_can_create_room_instance(self):
         self.assertEqual("Madonna Room", self.room1.name)
@@ -55,5 +55,17 @@ class TestRoom(unittest.TestCase):
         self.room1.remove_song_from_song_list(self.song1)
         self.assertEqual("Paranoid", self.room1.song_list[0].name)
 
+#Advanced extension - fav_song in song_list
+    def test_is_fav_song_in_song_list(self):
+        self.room1.add_song_to_song_list(self.song1)
+        self.room1.add_song_to_song_list(self.song2)
+        self.room1.add_song_to_song_list(self.song3)
+        response = self.room1.is_fav_song_in_list(self.guest1)
+        self.assertEqual(True, response)
 
+    def test_fav_song_not_in_song_list(self):
+        self.room1.add_song_to_song_list(self.song2)
+        self.room1.add_song_to_song_list(self.song3)
+        response = self.room1.is_fav_song_in_list(self.guest1)
+        self.assertEqual(False, response)
 
